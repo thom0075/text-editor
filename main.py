@@ -1,3 +1,9 @@
+"""
+Author: thom075
+Created on: 20/07/2021
+License type: MIT License
+"""
+
 import os
 import time
 import tkinter as tk
