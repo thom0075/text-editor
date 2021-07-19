@@ -9,8 +9,8 @@ from win10toast import ToastNotifier
 
 # TODO create auto-save function (DONE)
 # TODO create notifier function (DONE)
-# TODO create compile function  (WIP)
-# TODO create run file function (WIP)
+# TODO create compile function 
+# TODO create run file function 
 # TODO create the edit text tab (DONE)
 
 # set variable for openfilename
