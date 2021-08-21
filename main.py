@@ -1,3 +1,5 @@
+#Created by thom0075 (2021)
+#MIT License
 import os
 import time
 import tkinter as tk
