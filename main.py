@@ -1,9 +1,3 @@
-"""
-Author: thom075
-Created on: 20/07/2021
-License type: MIT License
-"""
-
 import os
 import time
 import tkinter as tk
@@ -15,12 +9,12 @@ from win10toast import ToastNotifier
 
 # TODO create auto-save function (DONE)
 # TODO create notifier function (DONE)
-# TODO create compile function 
-# TODO create run file function 
+# TODO create compile function  (DONE)
+# TODO create run file function (DONE)
 # TODO create the edit text tab (DONE)
-
+# TODO implement syntax highligthing feature (WIP)
 # set variable for openfilename
-global st_open, font_size
+global st_open, font_size, filename
 sidebar_color = "Black"
 st_open = False
 font_size = 12
@@ -56,11 +50,11 @@ def save_file():
 
 
 def dark_theme():
-    txt_edit.config(fg="white", bg="black")
+    txt_edit.config(fg="white", bg="black", insertbackground="white")
 
 
 def light_theme():
-    txt_edit.config(fg="black", bg="white")
+    txt_edit.config(fg="black", bg="white", insertbackground="black")
 
 
 def refresher():
@@ -146,15 +140,19 @@ def open_personalize_window():
 
 def compile_file():
     # os.system(f"g++ -o {st_open}")
+    global filename
+    filename = os.path.basename(str(st_open))
     try:
-        os.system(rf'cmd.exe /k "g++ -o test123 {st_open}"')
+        # os.system(rf'cd C:\Users\thoma\Desktop')
+        os.system(f"g++ {str(st_open)} -o {str(st_open)}_compiled.exe ")
+        # os.system("g++ %s" % (filename, filename))
     except:
         pass
 
 
 def run_file():
     try:
-        os.system(r'cmd.exe /k "test123.exe"')
+        os.system(f"start {str(st_open)}_compiled.exe")
     except:
         pass
 
@@ -191,7 +189,7 @@ window.rowconfigure(0, minsize=800, weight=1)
 window.columnconfigure(1, minsize=800, weight=1)
 
 txt_edit = tk.Text(window)  # create frame and text window
-txt_edit.config(font=("Fira Code", int(font_size)))
+txt_edit.config(font=("Fira Code", int(font_size)))  # sets the font and the blinking cursor's color
 fr_buttons = tk.Frame(window)
 # fr_buttons.config(bg=str(sidebar_color))  # set frame background (not necessary)
 btn_open = tk.Button(fr_buttons, text="Compile", command=compile_file)
