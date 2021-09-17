@@ -1,12 +1,10 @@
-#Created by thom0075 (2021)
-#MIT License
 import os
 import time
 import tkinter as tk
 from threading import Thread
 from tkinter import Menu
 from tkinter.filedialog import askopenfilename, asksaveasfilename
-
+from kwordslist import kwlist
 from win10toast import ToastNotifier
 
 # TODO create auto-save function (DONE)
@@ -146,15 +144,15 @@ def compile_file():
     filename = os.path.basename(str(st_open))
     try:
         # os.system(rf'cd C:\Users\thoma\Desktop')
-        os.system(f"g++ {str(st_open)} -o {str(st_open)}_compiled.exe ")
+        os.system(fr"g++ {str(st_open)} -o {str(st_open)}_compiled.exe ")
         # os.system("g++ %s" % (filename, filename))
     except:
-        pass
+        print("Directory must not contain spaces! Try again")
 
 
 def run_file():
     try:
-        os.system(f"start {str(st_open)}_compiled.exe")
+        os.system(fr"start {str(st_open)}_compiled.exe")
     except:
         pass
 
